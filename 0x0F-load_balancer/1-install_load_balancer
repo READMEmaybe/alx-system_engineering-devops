@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script installs and configures HAproxy
+apt-get install -y --no-install-recommends software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.8
+apt-get update
+apt-get install -y haproxy=2.8.\*
+sh -c "echo 'frontend haproxy\n\tbind *:80\n\tdefault_backend servers\n' >> /etc/haproxy/haproxy.cfg"
+sh -c "echo 'backend servers\n\tbalance roundrobin\n\tserver 392745-web-01 100.25.180.19:80 check\n\tserver 392745-web-02 100.24.244.121 check' >> /etc/haproxy/haproxy.cfg"
+service haproxy start
