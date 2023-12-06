@@ -2,7 +2,7 @@
 
 exec { 'update':
   provider => shell,
-  command  => 'sudo apt-get update',
+  command  => 'sudo apt-get -y update',
 }
 
 exec {'install Nginx':
