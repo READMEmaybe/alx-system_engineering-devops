@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# This script will check the DNS record type of a subdomain
+
+get_record_type() {
+	local sub_domain=$1
+	local domain=$2
+	dig_output=$(dig "$sub_domain"."$domain" +short)
+	destination=$(echo "$dig_output" | awk '{print $1}')
+	echo "The subdomain $sub_domain is a A record and points to $destination"
+}
+
+if [ $# -eq 1 ]; then
+	domain=$1
+	sub_domains=("www" "lb-01" "web-01" "web-02")
+	for sub_domain in "${sub_domains[@]}"; do
+		get_record_type "$sub_domain" "$domain"
+	done
+elif [ $# -eq 2 ]; then
+	sub_domain=$2
+	domain=$1
+	get_record_type "$sub_domain" "$domain"
+fi
+
