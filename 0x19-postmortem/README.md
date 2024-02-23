@@ -1,6 +1,6 @@
 # Post-Mortem: Digital Siesta
 
-<img src="https://giphy.com/embed/u2wg2uXJbHzkXkPphr/video" alt="Sleepy Debugging">
+![Sleepy Debugging](assets/u2wg2uXJbHzkXkPphr-ezgif.com-video-to-gif-converter.gif)
 
 ## Issue Summary:
 
